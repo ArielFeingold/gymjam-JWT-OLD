@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_17_213205) do
+ActiveRecord::Schema.define(version: 2018_08_18_014826) do
+
+  create_table "exercises", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.integer "sets", default: 1
+    t.float "weight"
+    t.integer "user_id"
+    t.integer "workout_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.float "wheight", default: 1.0
+    t.float "bodyfat", default: 1.0
+    t.float "shoulders", default: 1.0
+    t.float "chest", default: 1.0
+    t.float "left_bicep", default: 1.0
+    t.float "right_bicep", default: 1.0
+    t.float "right_thigh", default: 1.0
+    t.float "left_thigh", default: 1.0
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -21,6 +46,14 @@ ActiveRecord::Schema.define(version: 2018_08_17_213205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
